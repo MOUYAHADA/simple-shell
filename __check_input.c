@@ -6,13 +6,12 @@
  * @input: command as a full string
  * @av: argument vector
  * @status: pointer to status variable
- * @env: environment variables
  * @count: commands count
  *
  * Return: 0 on success, -1 on failure
  */
 
-int _check_input(char *input, char **av, int *status, char **env, int count)
+int _check_input(char *input, char **av, int *status, int count)
 {
 	t_cmd *cmd = NULL;
 
@@ -21,19 +20,26 @@ int _check_input(char *input, char **av, int *status, char **env, int count)
 		free(input), input = NULL;
 		return (-1);
 	}
-	cmd = _init_cmd(input, env);
+	cmd = _init_cmd(input);
 	if (cmd == NULL)
 	{
 		free(input), input = NULL;
 		return (-1);
 	}
-
+	if (_isbuiltin(cmd->cmd))
+	{
+		free(input);
+		_execute_builtin(cmd);
+		_free_cmd(cmd);
+		return (-1);
+	}
 	if (access(cmd->cmd, F_OK | X_OK) == -1)
 	{
 		char *full_path = _get_joined_path(cmd);
 
 		if (!full_path)
 		{
+			*status = 127;
 			_print_error(av[0], count, cmd->av[0], "not found");
 			_free_cmd(cmd);
 			free(input), input = NULL;

@@ -4,12 +4,11 @@
  * _init_cmd - initialize a command
  *
  * @input: full input
- * @env: environment variables array
  *
  * Return: a command struct
  */
 
-t_cmd *_init_cmd(char *input, char **env)
+t_cmd *_init_cmd(char *input)
 {
 	t_cmd *cmd = NULL;
 
@@ -27,7 +26,6 @@ t_cmd *_init_cmd(char *input, char **env)
 		return (NULL);
 	}
 	cmd->cmd = _strdup(cmd->av[0]);
-	cmd->env = env;
 
 	return (cmd);
 }

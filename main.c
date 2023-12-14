@@ -29,7 +29,7 @@ int main(int ac, char **av, char **env)
 			return (status);
 		}
 		count++;
-		code = _check_input(input, av, &status, env, count);
+		code = _check_input(input, av, &status, count);
 		if (code == -1)
 			continue;
 		free(input);

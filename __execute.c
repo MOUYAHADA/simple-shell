@@ -18,7 +18,7 @@ int _execute(char *input, t_cmd *cmd)
 
 	if (child_PID == 0)
 	{
-		if (execve(cmd->cmd, cmd->av, cmd->env))
+		if (execve(cmd->cmd, cmd->av, environ))
 		{
 			_free_cmd(cmd);
 			free(input), input = NULL;
