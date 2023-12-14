@@ -19,9 +19,13 @@ void _print_env(void)
 {
 	int index = 0;
 
+	if (!environ || !environ[0])
+		return;
+
 	while (environ[index])
 	{
 		_write(STDOUT_FILENO, environ[index]);
+		_write(STDOUT_FILENO, "\n");
 		index++;
 	}
 }
