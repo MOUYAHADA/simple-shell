@@ -7,11 +7,12 @@
  * @av: argument vector
  * @status: pointer to status variable
  * @count: commands count
+ * @env_len: environment variable array's original length
  *
  * Return: 0 on success, -1 on failure
  */
 
-int _check_input(char *input, char **av, int *status, int count)
+int _check_input(char *input, char **av, int *status, int count, int env_len)
 {
 	t_cmd *cmd = NULL;
 
@@ -29,7 +30,7 @@ int _check_input(char *input, char **av, int *status, int count)
 	if (_isbuiltin(cmd->cmd))
 	{
 		free(input);
-		_execute_builtin(cmd, status);
+		_execute_builtin(cmd, status, env_len);
 		_free_cmd(cmd);
 		return (-1);
 	}

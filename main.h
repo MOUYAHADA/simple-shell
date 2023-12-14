@@ -39,14 +39,15 @@ int _execute(char *input, t_cmd *cmd);
 char *_getenv(char *var);
 void _free_cmd(t_cmd *cmd);
 char **_split_str(char *input, const char *delim, int *token_count);
-int _check_input(char *input, char **av, int *status, int count);
+int _check_input(char *input, char **av, int *status, int count, int env_len);
 char *_get_joined_path(t_cmd *cmd);
 char *_strcpy(char *dest, char *src);
 void _print_error(char *program_name, int number, char *cmd, char *error_msg);
 void _int_to_string(int num, char *str);
 int _ispath(char *str);
 int _isbuiltin(char *cmd);
-void _execute_builtin(t_cmd *cmd, int *status);
+void _execute_builtin(t_cmd *cmd, int *status, int env_len);
 int _string_to_int(const char *str);
+int _arr_len(char **arr);
 
 #endif

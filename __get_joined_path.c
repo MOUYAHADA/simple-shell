@@ -22,6 +22,7 @@ char *_get_joined_path(t_cmd *cmd)
 	PATH = _getenv("PATH");
 	if (PATH == NULL)
 		return (NULL);
+
 	DIR = strtok(PATH, ":");
 	while (DIR != NULL)
 	{
