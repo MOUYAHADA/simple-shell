@@ -46,7 +46,7 @@ void _print_error(char *program_name, int number, char *cmd, char *error_msg);
 void _int_to_string(int num, char *str);
 int _ispath(char *str);
 int _isbuiltin(char *cmd);
-void _execute_builtin(t_cmd *cmd);
+void _execute_builtin(t_cmd *cmd, int *status);
 int _string_to_int(const char *str);
 
 #endif

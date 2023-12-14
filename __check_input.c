@@ -29,7 +29,7 @@ int _check_input(char *input, char **av, int *status, int count)
 	if (_isbuiltin(cmd->cmd))
 	{
 		free(input);
-		_execute_builtin(cmd);
+		_execute_builtin(cmd, status);
 		_free_cmd(cmd);
 		return (-1);
 	}
