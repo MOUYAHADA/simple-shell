@@ -5,7 +5,6 @@
  *
  * @ac: argument count
  * @av: argument vector
- * @env: environment variables array
  *
  * Return: 0 on success
  */
