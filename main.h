@@ -47,5 +47,6 @@ void _int_to_string(int num, char *str);
 int _ispath(char *str);
 int _isbuiltin(char *cmd);
 void _execute_builtin(t_cmd *cmd);
+int _string_to_int(const char *str);
 
 #endif
